@@ -57,7 +57,7 @@ function startCountdown() {
 
 /* HEART PARTICLES */
 function burstHearts() {
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 14; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.textContent = "❤";
