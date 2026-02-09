@@ -11,22 +11,19 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const countdownEl = document.getElementById("countdown");
 const finalEl = document.getElementById("final");
-const heartsContainer = document.getElementById("hearts");
 
-noBtn.addEventListener("mouseenter", () => {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 60);
-
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 80;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 
 yesBtn.addEventListener("click", () => {
-  burstHearts();
   step++;
 
   if (step < questions.length) {
     questionEl.textContent = questions[step];
+    noBtn.style.transform = "translate(0, 0)";
   } else {
     startCountdown();
   }
@@ -50,20 +47,4 @@ function startCountdown() {
       finalEl.classList.remove("hidden");
     }
   }, 1000);
-}
-
-function burstHearts() {
-  for (let i = 0; i < 14; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = "❤";
-
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "-20px";
-    heart.style.fontSize = 16 + Math.random() * 14 + "px";
-    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-
-    heartsContainer.appendChild(heart);
-    setTimeout(() => heart.remove(), 7000);
-  }
 }
